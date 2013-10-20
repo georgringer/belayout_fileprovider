@@ -41,7 +41,7 @@ class FileProvider implements DataProviderInterface {
 		$files = $this->getLayoutFiles();
 		foreach ($files as $file) {
 			$fileInformation = pathinfo($file);
-			if ($identifier === $fileInformation['basename']) {
+			if ($identifier === $fileInformation['filename']) {
 				return $this->createBackendLayout($file);
 			}
 		}
