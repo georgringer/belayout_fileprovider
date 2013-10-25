@@ -44,7 +44,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['file'][]
 ### 2. Adopt the TypoScript ###
 
 To be able to use the layout, adopt your TypoScript to like the example below.
-The layout file got the name ```Home.ts```, therefore the identifier for the cObj CASE is ```file_Home```.
+The layout file got the name ```Home.ts```, therefore the identifier for the cObj CASE is ```file__Home```.
 
 ```
 10 = FLUIDTEMPLATE
@@ -57,8 +57,8 @@ The layout file got the name ```Home.ts```, therefore the identifier for the cOb
 		default = TEXT
 		default.value = EXT:modernpackage/Resources/Private/Templates/main.html
 
-		file_Home = TEXT
-		file_Home.value = EXT:modernpackage/Resources/Private/Templates/home.html
+		file__Home = TEXT
+		file__Home.value = EXT:modernpackage/Resources/Private/Templates/home.html
 	}
 	layoutRootPath = EXT:modernpackage/Resources/Private/Templates/Layouts/
 	variables {
