@@ -49,16 +49,16 @@ The layout file got the name ```Home.ts```, therefore the identifier for the cOb
 ```
 10 = FLUIDTEMPLATE
 10 {
-	file.stdWrap.cObject = CASE
+	file.stdWrap.cObject = TEXT
 	file.stdWrap.cObject {
-		key.data = levelfield:-1, backend_layout_next_level, slide
-		key.override.field = backend_layout
-
-		default = TEXT
-		default.value = EXT:modernpackage/Resources/Private/Templates/main.html
-
-		file__Home = TEXT
-		file__Home.value = EXT:modernpackage/Resources/Private/Templates/home.html
+		data = levelfield:-1, backend_layout_next_level, slide
+		override.field = backend_layout
+		split {
+			token = file__
+			1.current = 1
+			1.wrap = |
+		}
+		wrap = EXT:modernpackage/Resources/Private/Templates/|.html
 	}
 	layoutRootPath = EXT:modernpackage/Resources/Private/Templates/Layouts/
 	variables {
