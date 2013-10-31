@@ -130,7 +130,7 @@ class FileProvider implements DataProviderInterface {
 		foreach ($imageExtensions as $extension) {
 			$icon = $filePath . '.' . $extension;
 			if (is_file($icon)) {
-				$icon = str_replace(PATH_site, '', $icon);
+				$icon = '../' . str_replace(PATH_site, '', $icon);
 				$backendLayout->setIconPath($icon);
 				break;
 			}
