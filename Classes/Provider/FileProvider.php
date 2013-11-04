@@ -85,7 +85,7 @@ class FileProvider implements DataProviderInterface {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ext'] as $extensionKey) {
 				$path = GeneralUtility::getFileAbsFileName('EXT:' . $extensionKey . '/Resources/Private/BackendLayouts/');
 
-				$filesOfDirectory = GeneralUtility::getFilesInDir($path, self::FILE_TYPES_LAYOUT, TRUE);
+				$filesOfDirectory = GeneralUtility::getFilesInDir($path, self::FILE_TYPES_LAYOUT, TRUE, 1);
 				foreach ($filesOfDirectory as $file) {
 					$this->addFileToCollection($file, $fileCollection);
 				}
@@ -97,7 +97,7 @@ class FileProvider implements DataProviderInterface {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'] as $extensionKey) {
 				$extensionKey = GeneralUtility::getFileAbsFileName($extensionKey);
 
-				$filesOfDirectory = GeneralUtility::getFilesInDir($extensionKey, self::FILE_TYPES_LAYOUT, TRUE);
+				$filesOfDirectory = GeneralUtility::getFilesInDir($extensionKey, self::FILE_TYPES_LAYOUT, TRUE, 1);
 				foreach ($filesOfDirectory as $file) {
 					$this->addFileToCollection($file, $fileCollection);
 				}
