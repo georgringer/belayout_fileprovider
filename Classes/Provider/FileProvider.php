@@ -35,10 +35,9 @@ class FileProvider implements DataProviderInterface {
 	 * Gets a backend layout by (regular) identifier.
 	 *
 	 * @param string $identifier
-	 * @param integer $pageId
 	 * @return NULL|BackendLayout
 	 */
-	public function getBackendLayout($identifier, $pageId) {
+	public function getBackendLayout($identifier) {
 		$files = $this->getLayoutFiles();
 		foreach ($files as $file) {
 			$fileInformation = pathinfo($file);
