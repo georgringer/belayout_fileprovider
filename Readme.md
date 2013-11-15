@@ -76,5 +76,5 @@ The layout file got the name ```Home.ts```, therefore the identifier for the cOb
 An optional locallang.xml or locallang.xlf file in this same directory can hold a translation of the layout. The identifier in the translation file is the file name without the file extension.
 
 ### Icon ###
-An optional can be defined by usint the same file name and an extension of the type png,gif or jpg.
-
+An optional can be defined by usint the same file name and an extension of the type png, gif or jpg.
+However be sure that the file is callable as there might be a rule in the .htaccess file restricting access to content on directories called Private
