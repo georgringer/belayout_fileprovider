@@ -81,14 +81,29 @@ class FileProvider implements DataProviderInterface {
 			return $fileCollection;
 		}
 
+		// Handle extensions by category
+		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ExtensionCategories'])) {
+			$extensionKeys = $this->getExtensionKeys();
+			foreach ($extensionKeys as $extensionKey) {
+				$paths = $this->getExtensionPaths($extensionKey);
+				foreach ($paths as $path) {
+					$filesOfDirectory = GeneralUtility::getFilesInDir($path, self::FILE_TYPES_LAYOUT, TRUE, 1);
+					foreach ($filesOfDirectory as $file) {
+						$this->addFileToCollection($file, $fileCollection);
+					}
+				}
+			}
+		}
+
 		// Handle extensions
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ext'])) {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ext'] as $extensionKey) {
-				$path = GeneralUtility::getFileAbsFileName('EXT:' . $extensionKey . '/Resources/Private/BackendLayouts/');
-
-				$filesOfDirectory = GeneralUtility::getFilesInDir($path, self::FILE_TYPES_LAYOUT, TRUE, 1);
-				foreach ($filesOfDirectory as $file) {
-					$this->addFileToCollection($file, $fileCollection);
+				$paths = $this->getExtensionPaths($extensionKey);
+				foreach ($paths as $path) {
+					$filesOfDirectory = GeneralUtility::getFilesInDir($path, self::FILE_TYPES_LAYOUT, TRUE, 1);
+					foreach ($filesOfDirectory as $file) {
+						$this->addFileToCollection($file, $fileCollection);
+					}
 				}
 			}
 		}
@@ -176,5 +191,51 @@ class FileProvider implements DataProviderInterface {
 		}
 		$fileCollection[$key] = $file;
 	}
+
+	/**
+	 * Return extensions
+	 *
+	 * @return array
+	 */
+	protected function getExtensionKeys() {
+		$extensionKeys = array();
+		$categories = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ExtensionCategories'];
+
+		/** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+
+		/** @var \TYPO3\CMS\Extensionmanager\Utility\ListUtility $listUtility */
+		$listUtility = $objectManager->get('TYPO3\\CMS\\Extensionmanager\\Utility\\ListUtility');
+
+		$extensions = $listUtility->getAvailableAndInstalledExtensionsWithAdditionalInformation();
+		foreach ($extensions as $extensionKey => $extensionInformation) {
+			if (
+				$extensionInformation['installed'] === TRUE &&
+				in_array($extensionInformation['category'], $categories)
+			) {
+				$extensionKeys[] = $extensionKey;
+			}
+		}
+		return $extensionKeys;
+	}
+
+	/**
+	 * @param string $extensionKey
+	 * @return array
+	 */
+	protected function getExtensionPaths($extensionKey){
+		$paths = array();
+		$resourcesPath = GeneralUtility::getFileAbsFileName('EXT:' . $extensionKey . '/Resources/Private/BackendLayouts/');
+		$configurationPath = GeneralUtility::getFileAbsFileName('EXT:' . $extensionKey . '/Configuration/BackendLayouts/');
+		if (is_dir($resourcesPath)) {
+			$paths[] = $resourcesPath;
+		}
+		if (is_dir($configurationPath)) {
+			$paths[] = $configurationPath;
+		}
+
+		return $paths;
+	}
+
 
 }
