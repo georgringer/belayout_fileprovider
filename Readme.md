@@ -30,7 +30,19 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][$_EXTKEY]
     = 'GeorgRinger\\BelayoutFileprovider\\Provider\\FileProvider';
 ```
 
-Basically it is the same as "by directory" but you don't need to add the path as this is always ```EXT:<extkey>/Resources/Private/BackendLayouts/```.
+Basically it is the same as "by directory" but you don't need to add the path as this is always
+```EXT:<extkey>/Resources/Private/BackendLayouts/```
+or
+```EXT:<extkey>/Configuration/BackendLayouts/```.
+
+#### By extension category ####
+Backend layouts of extensions with category **distribution** will be included automatically if the files are stored in
+```EXT:<extkey>/Resources/Private/BackendLayouts/```
+or
+```EXT:<extkey>/Configuration/BackendLayouts/```.
+
+A category can be included by adding it to the array ExtensionCategories:
+```$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ExtensionCategories'][] = 'foobar';```
 
 #### By single file ####
 
