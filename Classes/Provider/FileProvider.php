@@ -36,7 +36,7 @@ class FileProvider implements DataProviderInterface {
 	 *
 	 * @param string $identifier
 	 * @param integer $pageId
-	 * @return NULL|BackendLayout
+	 * @return void|BackendLayout
 	 */
 	public function getBackendLayout($identifier, $pageId) {
 		$files = $this->getLayoutFiles();
