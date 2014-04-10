@@ -26,8 +26,8 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'][]
 #### By extension key ####
 
 ```
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][$_EXTKEY]
-    = 'GeorgRinger\\BelayoutFileprovider\\Provider\\FileProvider';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['ext'][]
+    = $_EXTKEY;
 ```
 
 Basically it is the same as "by directory" but you don't need to add the path as this is always ```EXT:<extkey>/Resources/Private/BackendLayouts/```.
