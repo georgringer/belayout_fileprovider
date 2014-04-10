@@ -95,10 +95,10 @@ class FileProvider implements DataProviderInterface {
 
 		// Handle directories
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'])) {
-			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'] as $extensionKey) {
-				$extensionKey = GeneralUtility::getFileAbsFileName($extensionKey);
+			foreach ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'] as $directory) {
+				$directory = GeneralUtility::getFileAbsFileName($directory);
 
-				$filesOfDirectory = GeneralUtility::getFilesInDir($extensionKey, self::FILE_TYPES_LAYOUT, TRUE, 1);
+				$filesOfDirectory = GeneralUtility::getFilesInDir($directory, self::FILE_TYPES_LAYOUT, TRUE, 1);
 				foreach ($filesOfDirectory as $file) {
 					$this->addFileToCollection($file, $fileCollection);
 				}
