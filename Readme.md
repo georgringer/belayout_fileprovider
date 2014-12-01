@@ -16,7 +16,7 @@ First of all you need to install the extension. Then you need to register your f
 
 #### By directory ####
 
-If you define a directory, all files with the file type "ts" or "txt" within this directory are used.
+If you define a directory, all files with the file type "ts", "ts1" or "txt" within this directory are used.
 
 ```
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['dir'][]
