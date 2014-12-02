@@ -12,7 +12,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FileProvider implements DataProviderInterface {
 
-	const FILE_TYPES_LAYOUT = 'ts,txt';
+	const FILE_TYPES_LAYOUT = 'ts,ts1,txt';
 	const FILE_TYPES_ICON = 'png,gif,jpg';
 	const FILE_TYPES_TRANSLATION = 'xlf,xml';
 
