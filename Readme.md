@@ -41,9 +41,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutFileProvider']['file'][]
     =  'EXT:belayout_fileprovider/Home.ts';
 ```
 
-### 2. Adopt the TypoScript ###
+### 2. Adapt the TypoScript ###
 
-To be able to use the layout, adopt your TypoScript to like the example below.
+To be able to use the layout, adapt your TypoScript to look like the example below.
 The layout file got the name ```Home.ts```, therefore the identifier for the cObj TEXT is ```file__Home```.
 
 ```
