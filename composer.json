@@ -4,7 +4,6 @@
   "description": "A File provider for Backend Layouts",
   "homepage": "https://github.com/georgringer/belayout_fileprovider",
   "license": ["GPL-2.0+"],
-  "keywords": ["TYPO3 CMS"],
-  "version": "0.0.1"
+  "keywords": ["TYPO3 CMS"]
 }
 
